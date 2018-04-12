@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace PapuMart.DAL
 {
-    public class ItemRepository
+    public class ItemRepository: IItemRepository
     {
         public List<Item> items { get; set; }
 
@@ -51,5 +51,14 @@ namespace PapuMart.DAL
             items.Remove(selectedItem);
             return true;
         }
+    }
+
+    public interface IItemRepository
+    {
+         List<Item> GetAllItem();
+         Item AddItem(Item item);
+         Item UpdateItem(Item item);
+        bool DeleteItem(int id);
+
     }
 }

@@ -11,7 +11,8 @@ namespace PapuMart
     [TestFixture]
     public class StockManagement_Test
     {
-        private StockMangement _stock;
+        private IStockManagement _stock;
+        private IItemRepository _ItemRepository;
 
         [SetUp]
         public void SetUp()
@@ -23,7 +24,8 @@ namespace PapuMart
              new Item { Id = 1,ItemType=1,Name="Mango Juice",Description="Mango Juice" },
              new Item { Id = 1,ItemType=1,Name="Rice",Description="Rice" }
             };
-            _stock = new StockMangement();
+            _stock = Substitute.For<IStockManagement>();
+            _ItemRepository = Substitute.For<IItemRepository>();
             _stock.GetAllItem().Returns(itemsList);
         }
 
@@ -32,7 +34,7 @@ namespace PapuMart
         {
             // Arrange
             var list = _stock.GetAllItem();
-            var ItemRepository = Substitute.For<IItemRepository>();
+           
             // ACt
             var item = new Item
             {
@@ -46,9 +48,9 @@ namespace PapuMart
             };
             _stock.AddItem(item);
 
-
             // Assert
-            ItemRepository.Received(1).AddItem(item);
+            _ItemRepository.Received().AddItem(Arg.Any<Item>());
+
         }
                       
         

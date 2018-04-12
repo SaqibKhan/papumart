@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PapuMart_Test", "PapuMart\PapuMart_Test.csproj", "{7A611AA9-7F09-4A45-A78F-E06429F66A74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PapuMart.Business", "PapuMartBusiness\PapuMart.Business.csproj", "{19CD6E18-94D1-4399-A7B4-4E571388C570}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PapuMart.Business", "PapuMartBusiness\PapuMart.Business.csproj", "{19CD6E18-94D1-4399-A7B4-4E571388C570}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PapuMart.Entities", "Entities\PapuMart.Entities.csproj", "{FC29BE1D-9B85-4F95-9F1C-8F3E6AA2B32A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PapuMart.Entities", "Entities\PapuMart.Entities.csproj", "{FC29BE1D-9B85-4F95-9F1C-8F3E6AA2B32A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PapuMart.DAL", "DAL\PapuMart.DAL.csproj", "{A757898F-AABF-4EBE-B27E-6D15CAAF3181}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PapuMart.DAL", "DAL\PapuMart.DAL.csproj", "{A757898F-AABF-4EBE-B27E-6D15CAAF3181}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PapuMart_Test2", "PapuMart_Test2\PapuMart_Test2.csproj", "{EEBC5A8B-3C62-4B14-9E48-6B2C8D322AB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7A611AA9-7F09-4A45-A78F-E06429F66A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A611AA9-7F09-4A45-A78F-E06429F66A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A611AA9-7F09-4A45-A78F-E06429F66A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A611AA9-7F09-4A45-A78F-E06429F66A74}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19CD6E18-94D1-4399-A7B4-4E571388C570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19CD6E18-94D1-4399-A7B4-4E571388C570}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19CD6E18-94D1-4399-A7B4-4E571388C570}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{A757898F-AABF-4EBE-B27E-6D15CAAF3181}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A757898F-AABF-4EBE-B27E-6D15CAAF3181}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A757898F-AABF-4EBE-B27E-6D15CAAF3181}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEBC5A8B-3C62-4B14-9E48-6B2C8D322AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBC5A8B-3C62-4B14-9E48-6B2C8D322AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBC5A8B-3C62-4B14-9E48-6B2C8D322AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBC5A8B-3C62-4B14-9E48-6B2C8D322AB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
