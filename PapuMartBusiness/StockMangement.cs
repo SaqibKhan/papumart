@@ -7,10 +7,10 @@ namespace PapuMart.Business
 {
     public class StockMangement : IStockManagement
     {
-        public ItemRepository _itemRepository;
-        public StockMangement()
+        public IItemRepository _itemRepository;
+        public StockMangement(IItemRepository itemRepository)
         {
-            _itemRepository = new ItemRepository();
+            _itemRepository = itemRepository;
         }
 
         public List<Item> GetAllItem()

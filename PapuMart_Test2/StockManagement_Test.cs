@@ -13,30 +13,43 @@ namespace PapuMart
     {
         private IStockManagement _stock;
         private IItemRepository _ItemRepository;
+        List<Item> _itemsList;
 
         [SetUp]
         public void SetUp()
         {
-            var itemsList = new List<Item>
+           _itemsList = new List<Item>
             {
              new Item { Id = 1,ItemType=1,Name="Maggie CUP",Description="Maggie Cup used for Maggie noodles" },
              new Item { Id = 1,ItemType=1,Name="Tea CUP",Description="Tea Cup" },
              new Item { Id = 1,ItemType=1,Name="Mango Juice",Description="Mango Juice" },
              new Item { Id = 1,ItemType=1,Name="Rice",Description="Rice" }
             };
-            _stock = Substitute.For<IStockManagement>();
+            
+
             _ItemRepository = Substitute.For<IItemRepository>();
-            _stock.GetAllItem().Returns(itemsList);
+            _stock = new StockMangement(_ItemRepository);
+            _stock.GetAllItem().Returns(_itemsList);
+           
         }
 
         [Test]
-        public void CreateItem_ShouldAddOneIteminList()
+        public void GelAllItems_DAL_ReceiveCall()
         {
-            // Arrange
+            // ACt
             var list = _stock.GetAllItem();
            
-            // ACt
-            var item = new Item
+            // Assert
+            Assert.IsNotNull(list);
+            Assert.AreEqual(list.Count , _itemsList.Count);
+
+        }
+
+        [Test]
+        public void CreateItem_DAL_ReceiveCall()
+        {
+            // Arrange
+            var item = new Item()
             {
                 Id = 10213,
                 Name = "TestItem",
@@ -46,14 +59,61 @@ namespace PapuMart
                 Price = 100,
                 discount = 5
             };
-            _stock.AddItem(item);
+            _stock.AddItem(item).Returns(item);
 
+            // ACt
+           var tempItem= _stock.AddItem(item);
+            var list = _stock.GetAllItem();
+            
             // Assert
-            _ItemRepository.Received().AddItem(Arg.Any<Item>());
+            _ItemRepository.Received(1).AddItem(Arg.Any<Item>());
+            Assert.IsNotNull(item);
+            Assert.AreEqual(tempItem.Id, item.Id);
 
         }
-                      
-        
+
+        [Test]
+        public void UpdateItem__DAL_ReceiveCall()
+        {
+            // Arrange
+            var item = new Item()
+            {
+                Id = 10213,
+                Name = "TestItem",
+                Description = "Item Description 01",
+                Quantity = 9,
+                ItemType = 1,
+                Price = 100,
+                discount = 5
+            };
+            _stock.UpdateItem(item).Returns(item);
+
+            // ACt
+            var tempItem = _stock.UpdateItem(item);
+            var list = _stock.GetAllItem();
+
+            // Assert
+            _ItemRepository.Received(1).UpdateItem(Arg.Any<Item>());
+            Assert.IsNotNull(item);
+            Assert.AreEqual(tempItem.Id, item.Id);
+
+        }
+
+        [Test]
+        public void DeleteItem__DAL_ReceiveCall()
+        {
+            // Arrange
+            int ItemId = 10213;
+
+            // ACt
+            _stock.DeleteItem(ItemId);
+            var list = _stock.GetAllItem();
+
+            // Assert
+            _ItemRepository.Received(1).DeleteItem(Arg.Any<int>());
+           
+
+        }
     }
 
     
